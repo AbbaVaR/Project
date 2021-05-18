@@ -18,7 +18,8 @@ def database_get_info(id_db):
                                       port="5432",
                                       database="postgres_db")
         cursor = connection.cursor()
-        return cursor.execute("SELECT * FROM mobile WHERE id = %s ;", id_db)
+        cursor.execute("SELECT * FROM mobile WHERE id = %s ;", id_db)
+        return cursor.fetchone()
     except (Exception, Error) as error:
         return error
     finally:
