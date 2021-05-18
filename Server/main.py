@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import psycopg2
 from psycopg2 import Error
 
@@ -7,21 +7,19 @@ app = FastAPI()
 
 @app.get("/{id}")
 def return_info(id: int):
-    return database_get_info(id)
-
-
-def database_get_info(id_db):
     try:
-        connection = psycopg2.connect(user="postgres",
-                                      password="1111",
+        connection = psycopg2.connect(user="admin",
+                                      password="000000",
                                       host="127.0.0.1",
                                       port="5432",
-                                      database="postgres_db")
+                                      database="map_info")
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM mobile WHERE id = %s ;", id_db)
-        return cursor.fetchone()
+        cursor.execute("SELECT * FROM info WHERE id = %s ;", (id,))
+        info = cursor.fetchone()
+        request = {'id': info[0], 'x': info[1], 'y': info[2], 'info': info[3]}
+        return request
     except (Exception, Error) as error:
-        return error
+        raise HTTPException(status_code=404, detail={'id': '0', 'x': '0', 'y': '0', 'info': 'Нет кабинета'})
     finally:
         if connection:
             cursor.close()
