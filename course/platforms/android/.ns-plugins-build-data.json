@@ -1,0 +1,10 @@
+{
+	"@nativescript/core": {
+		"D:\\Edu\\course\\node_modules\\@nativescript\\core\\platforms\\android\\native-api-usage.json": "34ee0e9771ad7dd9d388c191734d71507a04565a",
+		"D:\\Edu\\course\\node_modules\\@nativescript\\core\\platforms\\android\\widgets-release.aar": "00953f345b5812f5abcf4eb6fc0b95672d99b580"
+	},
+	"nativescript-socketio": {
+		"D:\\Edu\\course\\node_modules\\nativescript-socketio\\platforms\\android\\fancylogger-release.aar": "3d953e0e92d87fa89414276ac07edc7347a92b5d",
+		"D:\\Edu\\course\\node_modules\\nativescript-socketio\\platforms\\android\\include.gradle": "c541a1b67002137b77d5038c1424589f066408d9"
+	}
+}
