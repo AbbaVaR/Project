@@ -11,6 +11,7 @@ export default new Vuex.Store({
     id : '2287',
     correctX : -20,
     correctY : -20,
+    url : 'http://192.168.1.50:8000/' 
   },
   mutations: {
     changeX(state, newX){
@@ -30,6 +31,9 @@ export default new Vuex.Store({
     },
     correctionY(state,corY){
       state.correctY = corY;
+    },
+    changeUrl(state, newUrl){
+      state.url = newUrl;
     },
   },
   actions: {

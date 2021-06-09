@@ -19,7 +19,7 @@ def return_info(id: int):
         request = {'id': info[0], 'x': info[1], 'y': info[2], 'info': info[3]}
         return request
     except (Exception, Error) as error:
-        raise HTTPException(status_code=404, detail={'id': '0', 'x': '0', 'y': '0', 'info': 'Нет кабинета'})
+        raise HTTPException(status_code=404, detail={info: error})
     finally:
         if connection:
             cursor.close()

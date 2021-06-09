@@ -21,7 +21,6 @@ import { Http } from '@nativescript/core'
    export default {
     data() {
       return {
-        url: 'http://192.168.1.50:8000/',
         cabinet: '',
         corps: '',
       }
@@ -45,7 +44,7 @@ import { Http } from '@nativescript/core'
 
         console.log(`Get request ${this.url + id}`)
         Http.request({
-          url: this.url + id,
+          url: this.$store.state.url + id,
           method: 'get'
         }).then(
           (response) => {
@@ -82,10 +81,10 @@ import { Http } from '@nativescript/core'
           message: "Введите адрес сервера:",
           okButtonText: "ок",
           cancelButtonText: "отмена",
-          defaultText: this.url,
+          defaultText: this.$store.state.url,
         }).then(result => {
-          console.log(`Set url: ${result.result}, url: ${result.text}`)
-          this.url = result.text;
+          console.log(`Set url: ${result.result}, url: ${result.text}`);
+          this.$store.commit('changeUrl', result.text);
           this.correctionX();
         });
       },
